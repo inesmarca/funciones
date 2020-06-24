@@ -34,6 +34,7 @@ createFile:
 
 	push eax
 	call close
+	add esp, 4
 
         mov esp, ebp
         pop ebp
@@ -53,7 +54,7 @@ writeFile:
 	push 2
 	push ecx
 	call open
-	add esp, 4
+	add esp, 2*4
 	mov ecx, eax
 
 	push ebx
@@ -66,7 +67,7 @@ writeFile:
         call write
 	add esp, 3*4
 
-	push eax
+	push ecx
 	call close
 	add esp, 4
 	
@@ -102,6 +103,7 @@ close:
 	push ebp
 	mov ebp, esp
 	push ebx
+
 	mov eax, 6
 	mov ebx, [ebp+8]
 	int 80h
@@ -154,7 +156,7 @@ print:
 	push ebx
 	push 1
 	call write
-	add esp, 2*4
+	add esp, 3*4
 
 	pop ebx
 	pop eax
