@@ -1,4 +1,4 @@
-#include <stdio.h>
+extern void print(const char * str);
 
 int strcmp(char * s1, char * s2) {
     int cmp = 1;
@@ -59,5 +59,23 @@ void orderArray(int * array, int dim) {
         int aux = array[i];
         array[i] = array[min];
         array[min] = aux;
+    }
+}
+
+void toUpper(char * str) {
+    while (*str != '\0') {
+        if (*str >= 'a' && *str <= 'z') {
+            *str -= 'a' - 'A';
+        }
+        str++;
+    }
+}
+
+void toLower(char * str) {
+    while (*str != '\0') {
+        if (*str >= 'A' && *str <= 'Z') {
+            *str += 'a' - 'A';
+        }
+        str++;
     }
 }
